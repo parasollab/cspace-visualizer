@@ -2,6 +2,8 @@
 
 > Last Updated May 19, 2024 by Courtney McBeth
 
+**Read this entire README before working with the code!**
+
 ## Usage
 
 Recommended: Create and activate a virual environment
@@ -67,3 +69,9 @@ obstacles:
     theta: 45 # degrees, rotated about center
     color: blueviolet
 ```
+
+## How to Merge Code
+
+**IMPORTANT:** Make your changes on a new branch (not main).
+
+When you're ready, make a pull request to merge your branch into main. This will request a code review from a code owner. They may request changes or merge the code.

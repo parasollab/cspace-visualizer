@@ -7,7 +7,7 @@ class DOFType(Enum):
     ROTATION = 2 # TODO add support for manipulators
 
 class DOF:  
-    def __init__(self, name, type, range):
+    def __init__(self, name, type, range = None):
         self.name = name
         self.type = type
         self.range = range

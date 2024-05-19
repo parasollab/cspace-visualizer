@@ -6,3 +6,13 @@ obstacles:
     location: [0, 0]
     radius: 1
     color: lightseagreen
+  - shape: circle
+    location: [2, 0]
+    radius: 2
+    color: coral
+  - shape: rectangle
+    location: [-3, 5]
+    width: 2
+    height: 1
+    theta: 45 # degrees
+    color: blueviolet

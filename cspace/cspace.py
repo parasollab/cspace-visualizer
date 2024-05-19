@@ -7,7 +7,7 @@ class CSpace:
         self.environment = environment
 
     def display(self, ax, resolution : float = 0.1):
-        assert len(self.robot.dofs) <= 2, "Only 2D or 3D robots are supported"
+        assert len(self.robot.dofs) <= 2, "Only 2D or 3D cspaces are supported"
 
         if len(self.robot.dofs) == 2:
             x_min, x_max = self.robot.dofs[0].range if self.robot.dofs[0].range is not None else self.environment.boundary['x']
@@ -21,7 +21,11 @@ class CSpace:
                         ax.plot(x, y, '.', color=shape.color)
                     y += resolution
                 x += resolution
+
+            ax.set_xlabel(self.robot.dofs[0].name)
+            ax.set_ylabel(self.robot.dofs[1].name)
         else:
+            # TODO: Implement 3D cspace
             raise NotImplementedError("3D robots are not supported yet")
         
         ax.axis([x_min, x_max, y_min, y_max])

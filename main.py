@@ -11,7 +11,7 @@ def main():
     parser.add_argument('-e', '--environment_file', dest='environment_file', type=str, help='Path to the environment file')
     parser.add_argument('-d', '--resolution', dest='resolution', type=float, help='Resolution of the configuration space (default: 0.1)', default=0.1)
 
-    args, remaining_argv = parser.parse_known_args()
+    args, _ = parser.parse_known_args()
     robot_type = args.robot_type
     if robot_type == 'point':
         # There are no additional configurations for the point robot
@@ -21,6 +21,11 @@ def main():
         parser.add_argument('-s', '--radius', dest='radius', type=float, help='Radius of the circle robot')
         radius = parser.parse_args().radius
         robot = circle_robot.CircleRobot2D(radius)
+    elif robot_type == 'circle3d':
+        # The circle robot requires the radius as an additional configuration
+        parser.add_argument('-s', '--radius', dest='radius', type=float, help='Radius of the circle robot')
+        radius = parser.parse_args().radius
+        robot = circle_robot.CircleRobot3D(radius)
     else:
         raise NotImplementedError(f'Robot type {robot_type} not implemented')
 
@@ -35,14 +40,16 @@ def main():
 
     # Display the environment and configuration space
     print('Displaying environment and computing configuration space...')
-    fig, ax = plt.subplots(1, 2)
+    fig = plt.figure()
     fig.suptitle(robot.name)
 
-    ax[0].set_title('Environment')
-    environment.display(ax[0])
+    ax = fig.add_subplot(1, 2, 1)
+    ax.set_title('Environment')
+    environment.display(ax)
 
-    ax[1].set_title('Configuration Space')
-    cs.display(ax[1], resolution=args.resolution)
+    ax = fig.add_subplot(1, 2, 2, projection='3d' if len(robot.dofs) == 3 else None)
+    ax.set_title('Configuration Space')
+    cs.display(ax, resolution=args.resolution)
 
     plt.tight_layout()
     plt.show()

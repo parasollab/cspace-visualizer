@@ -30,6 +30,36 @@ class CircleRobot2D(Robot):
                 raise NotImplementedError('Shape not implemented')
             
         return True, None
+    
+class CircleRobot3D(Robot):
+    def __init__(self, radius):
+        self.radius = radius
+        dofs = [DOF('x', DOFType.POSITION), DOF('y', DOFType.POSITION), DOF('theta', DOFType.ORIENTATION, [-math.pi, math.pi])]
+        super().__init__(f'Circle Robot with Radius {radius}', dofs)
+    
+    def is_valid(self, env, q) -> tuple[bool, Shape]:
+        # Check if the circle robot is inside the environment
+        x, y, _ = q
+        if x < env.boundary['x'][0] or x > env.boundary['x'][1]:
+            return False, None
+        if y < env.boundary['y'][0] or y > env.boundary['y'][1]:
+            return False, None
+
+        # Check if the circle robot is colliding with any obstacle
+        # Theta is ignored because the rotation of the circle does not affect the collision
+        for shape in env.shapes:
+            if shape.shape == 'circle':
+                dx = x - shape.location[0]
+                dy = y - shape.location[1]
+                if dx**2 + dy**2 <= (self.radius + shape.radius)**2:
+                    return False, shape
+            elif shape.shape == 'rectangle':
+                if is_collision((x, y), self.radius, shape.location, shape.width, shape.height, shape.theta):
+                    return False, shape
+            else:
+                raise NotImplementedError('Shape not implemented')
+            
+        return True, None
 
 def is_collision(circle_center, circle_radius, rect_center, rect_width, rect_height, rect_angle):
     def rotate_point(px, py, cx, cy, angle):

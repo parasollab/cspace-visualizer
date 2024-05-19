@@ -1,0 +1,8 @@
+boundary:
+  x: [-10, 10]
+  y: [-10, 10]
+obstacles:
+  - shape: circle
+    location: [0, 0]
+    radius: 1
+    color: lightseagreen

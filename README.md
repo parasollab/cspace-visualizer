@@ -27,7 +27,7 @@ The cspace visualizer can be run as shown below (see `main.py` for config option
 python main.py -r <robot_type> -e <environment_file> <optional_configs>
 ```
 
-For example, to use a circle robot with radius 2.0 in the `examples\example.yaml` environment
+For example, to use a circle robot with radius 2.0 in the `examples/example.yaml` environment
 
 ```bash
 python main.py -r circle -e examples/example.yaml --radius 2 --resolution 0.1
@@ -45,7 +45,7 @@ When implementing a new robot class, the bulk of the work will be implementing t
 
 ## Adding a New Environment
 
-Environments are specified in yaml files. Add new environments in the examples folder. Each environment file lists a boundary range for the environment and a list of shapes that make up the obstacles. All environments are two dimensional. See `examples\example.yaml`.
+Environments are specified in yaml files. Add new environments in the examples folder. Each environment file lists a boundary range for the environment and a list of shapes that make up the obstacles. All environments are two dimensional. See `examples/example.yaml`.
 
 The supported shapes are circles and rectangles. Files follow the format shown in the example below. All named matplotlib colors are supported.
 

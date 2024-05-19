@@ -75,3 +75,11 @@ obstacles:
 **IMPORTANT:** Make your changes on a new branch (not main).
 
 When you're ready, make a pull request to merge your branch into main. This will request a code review from a code owner. They may request changes or merge the code.
+
+## Remaining Robots
+
+- Rectangle with parameterizable length and width
+- Equilateral triangle with parameterizable side length
+- 2 link manipulator
+- 3 link manipulator
+- Elliptical robot with parameterizable radii

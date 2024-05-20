@@ -82,4 +82,5 @@ When you're ready, make a pull request to merge your branch into main. This will
 - Equilateral triangle with parameterizable side length
 - 2 link manipulator
 - 3 link manipulator
+- mobile 1 link manipulator
 - Elliptical robot with parameterizable radii

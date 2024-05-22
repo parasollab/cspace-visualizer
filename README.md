@@ -2,7 +2,7 @@
 
 > Last Updated May 19, 2024 by Courtney McBeth
 
-**Read this entire README before working with the code!**
+**Read this entire README before working with the code! View the assignment instructions on Canvas.**
 
 ## Usage
 
